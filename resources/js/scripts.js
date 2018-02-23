@@ -1,5 +1,5 @@
 var $randomWiki = 'https://en.wikipedia.org/wiki/Special:Random'
-var $searchWiki = 'http://en.wikipedia.org/w/api.php?action=opensearch&limit=10&namespace=0&format=json&search=';
+var $searchWiki = 'https://en.wikipedia.org/w/api.php?action=opensearch&limit=10&namespace=0&format=json&search=';
 
 
 $(document).ready(function(){
@@ -10,16 +10,11 @@ $(document).ready(function(){
       window.open($randomWiki);
     });
 
-
-
     $('#getSearchWiki').click(function(){
         $('#buttonOptions').css('display','none');
         $('#wikiSearchForm').css('display','inline-block');
         $('#wikiResetForm').css('display','block');
     });
-
-
-
     $('#getWikiSearchText').click(function(){
       if($('#wikiSearchText').val() !== ''){
       $('#searchError').css('display','none');
@@ -35,14 +30,9 @@ $(document).ready(function(){
           async: false,
           dataType: "jsonp",
           success: function (data, textStatus, jqXHR) {
-
               $('#wikiSearchForm').css('display','none');
-
               var $wikiResult = '';
               var $hRef = '#';
-
-
-
               //build list
               console.log(data);
               for(var i = 0; i < data[1].length; i++){
@@ -59,29 +49,16 @@ $(document).ready(function(){
 
                 $('#wikiResults').append($wikiResult);
               }
-
-
-
-
-
-
           },
           error: function (errorMessage) {
             alert(errorMessage);
-
           }
       });
     }
     else{
-
-
       $('#searchError').css('display','block');
 
     }
-
-
-
-
       return false;
     });
 
